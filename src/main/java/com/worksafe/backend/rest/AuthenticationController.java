@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.worksafe.backend.dto.LoginDto;
 import com.worksafe.backend.dto.SignupDto;
 import com.worksafe.backend.enumarator.AuthProvider;
+import com.worksafe.backend.persistence.entity.User;
 import com.worksafe.backend.security.TokenProvider;
 import com.worksafe.backend.service.UserService;
-import com.worksafe.backend.persistence.entity.User;
 
 import lombok.RequiredArgsConstructor;
 

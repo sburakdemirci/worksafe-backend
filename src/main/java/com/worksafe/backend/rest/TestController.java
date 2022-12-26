@@ -13,8 +13,8 @@ public class TestController {
 
     @GetMapping("test")
     public String api(@CurrentUser UserPrincipal principal) {
-        throw  new RuntimeException();
-      //  return "Successful";
+        throw new RuntimeException();
+        //  return "Successful";
     }
 
 }

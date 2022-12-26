@@ -7,24 +7,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtTokenProperties {
 
+    private String secretKey;
+    private Long expireLength;
+
     public String getSecretKey() {
         return secretKey;
-    }
-
-    public Long getExpireLength() {
-        return expireLength;
     }
 
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
     }
 
+    public Long getExpireLength() {
+        return expireLength;
+    }
+
     public void setExpireLength(Long expireLength) {
         this.expireLength = expireLength;
     }
-
-    private String secretKey;
-    private Long expireLength;
 
 
 }

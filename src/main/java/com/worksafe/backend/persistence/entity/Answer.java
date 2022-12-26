@@ -28,8 +28,9 @@ public class Answer {
 }
 
 class AnswerOrderKey implements Serializable {
-    private Long quiz;
-    private int answerOrder;
+
+    private final Long quiz;
+    private final int answerOrder;
 
     public AnswerOrderKey(Long quiz, int answerOrder) {
         this.quiz = quiz;

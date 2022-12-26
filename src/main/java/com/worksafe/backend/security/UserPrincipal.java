@@ -16,21 +16,24 @@ import com.worksafe.backend.persistence.entity.User;
 public class UserPrincipal implements OAuth2User, UserDetails {
 */
 public class UserPrincipal implements UserDetails {
-    private Long id;
-    private String email;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
+
+    private final Long id;
+    private final String email;
+    private final String password;
+    private final Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
-    private boolean enabled;
-    private boolean locked;
+    private final boolean enabled;
+    private final boolean locked;
 
 
-    public UserPrincipal(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities, boolean enabled, boolean accountNonLocked ) {
+    public UserPrincipal(Long id, String email, String password,
+            Collection<? extends GrantedAuthority> authorities, boolean enabled,
+            boolean accountNonLocked) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
-        this.enabled=enabled;
+        this.enabled = enabled;
         this.locked = accountNonLocked;
 
     }

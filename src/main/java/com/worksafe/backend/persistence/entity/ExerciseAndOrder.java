@@ -35,13 +35,12 @@ public class ExerciseAndOrder {
 
 class ExerciseOrderId implements Serializable {
 
+    private final Long exercise;
+    private final Integer exerciseOrder;
     public ExerciseOrderId(Long exercise, Integer exerciseOrder) {
         this.exercise = exercise;
         this.exerciseOrder = exerciseOrder;
     }
-
-    private Long exercise;
-    private Integer exerciseOrder;
 
 }
 

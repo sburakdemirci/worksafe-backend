@@ -16,18 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CustomReminder extends EntityAuditBase {
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    User user;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotNull
     private String title;
-
     @NotNull
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    User user;
 
     @Builder
     public CustomReminder(String title, String description, User user) {

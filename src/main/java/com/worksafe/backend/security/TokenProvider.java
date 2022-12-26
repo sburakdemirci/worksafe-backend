@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TokenProvider {
 
-    private JwtTokenProperties jwtTokenProperties;
+    private final JwtTokenProperties jwtTokenProperties;
 
     public TokenProvider(JwtTokenProperties jwtTokenProperties) {
         this.jwtTokenProperties = jwtTokenProperties;

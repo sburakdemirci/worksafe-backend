@@ -37,6 +37,6 @@ public class ExerciseBundle extends EntityAuditBase {
     //todo this will be a calculated field from exercise durations. It will be not a direct database field.
 
     //todo burak cascade
-    @OneToMany(mappedBy="exerciseBundle")
+    @OneToMany(mappedBy = "exerciseBundle")
     private List<ExerciseAndOrder> exerciseAndOrders;
 }

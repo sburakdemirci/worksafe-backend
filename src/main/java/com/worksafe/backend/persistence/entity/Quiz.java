@@ -11,11 +11,11 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Quiz extends EntityAuditBase {
 
+    @OneToMany(mappedBy = "quiz")
+    List<Answer> answers;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String question;
-    @OneToMany(mappedBy="quiz")
-    List<Answer> answers;
 
 }
