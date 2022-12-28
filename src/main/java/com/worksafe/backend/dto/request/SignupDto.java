@@ -1,4 +1,4 @@
-package com.worksafe.backend.dto;
+package com.worksafe.backend.dto.request;
 
 import org.hibernate.validator.constraints.Length;
 

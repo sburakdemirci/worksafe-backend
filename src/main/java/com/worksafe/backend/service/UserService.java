@@ -22,6 +22,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public boolean existsById(Long id){
+
+    }
+
     public User update(User user) {
         return userRepository.save(user);
     }
@@ -33,7 +37,6 @@ public class UserService {
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
     }
-
 
     public boolean checkExistsByEmail(String email) {
         return userRepository.existsByEmail(email);

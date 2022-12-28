@@ -1,15 +1,22 @@
 package com.worksafe.backend.persistence.entity;
 
 
+import com.worksafe.backend.dto.request.ExerciseDto;
+import com.worksafe.backend.enumarator.BodyPart;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Exercise extends EntityAuditBase {
 
 
@@ -21,15 +28,39 @@ public class Exercise extends EntityAuditBase {
     private String title;
 
     @NotNull
-    private int duration;
-
-    @NotNull
     private String subtitle;
 
     @NotNull
     private String description;
-    //private Category category; ? Define category if needed or delete it
 
     @NotNull
     private String animationUrl;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private BodyPart bodyPart;
+
+    private boolean visible;
+
+
+    public Exercise(ExerciseDto exerciseDto) {
+        this.title = exerciseDto.getTitle();
+        this.subtitle = exerciseDto.getSubtitle();
+        this.description = exerciseDto.getDescription();
+        this.animationUrl = exerciseDto.getAnimationUrl();
+        this.bodyPart = exerciseDto.getBodyPart();
+        this.visible = true;
+    }
+
+    public Exercise update(ExerciseDto exerciseDto) {
+        this.title = exerciseDto.getTitle();
+        this.subtitle = exerciseDto.getSubtitle();
+        this.description = exerciseDto.getDescription();
+        this.animationUrl = exerciseDto.getAnimationUrl();
+        this.bodyPart = exerciseDto.getBodyPart();
+        this.visible = true;
+        return this;
+    }
+
+
 }

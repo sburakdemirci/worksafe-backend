@@ -10,7 +10,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class UserSystemReminder {
+public class SystemReminderSubscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,6 @@ public class UserSystemReminder {
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private SystemReminder systemReminder;
+    private SystemReminder reminder;
 
 }

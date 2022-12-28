@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worksafe.backend.dto.LoginDto;
-import com.worksafe.backend.dto.SignupDto;
+import com.worksafe.backend.dto.request.LoginDto;
+import com.worksafe.backend.dto.request.SignupDto;
 import com.worksafe.backend.enumarator.AuthProvider;
 import com.worksafe.backend.persistence.entity.User;
 import com.worksafe.backend.security.TokenProvider;

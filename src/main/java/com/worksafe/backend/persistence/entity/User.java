@@ -1,11 +1,18 @@
 package com.worksafe.backend.persistence.entity;
 
 
-import com.worksafe.backend.enumarator.AuthProvider;
+import java.util.Arrays;
+import java.util.List;
 
+import com.worksafe.backend.enumarator.AuthProvider;
+import com.worksafe.backend.enumarator.Role;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +24,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
-
 public class User extends EntityAuditBase {
 
     @Id
@@ -35,16 +41,17 @@ public class User extends EntityAuditBase {
     private String avatarUrl;
 
     //todo hashlenmis password ile geldiginde izin vermediginden emin ol
-
-
     @NotNull
     private String password;
-
 
     @NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider authProvider;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "Authorities")
+    @Enumerated(EnumType.STRING)
+    List<Role> authorities;
 
     private String providerId;
     private boolean enabled;
@@ -61,5 +68,6 @@ public class User extends EntityAuditBase {
         this.password = password;
         this.authProvider = authProvider;
         this.providerId = providerId;
+        this.authorities = Arrays.asList(Role.USER);
     }
 }

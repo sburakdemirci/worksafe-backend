@@ -3,6 +3,7 @@ package com.worksafe.backend.persistence.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +38,8 @@ public class ExerciseBundle extends EntityAuditBase {
     //todo this will be a calculated field from exercise durations. It will be not a direct database field.
 
     //todo burak cascade
-    @OneToMany(mappedBy = "exerciseBundle")
-    private List<ExerciseAndOrder> exerciseAndOrders;
+    @OneToMany(mappedBy = "exerciseBundle", cascade = CascadeType.ALL)
+    private List<ExerciseBundleItem> exerciseBundleItems;
+
+    private boolean visible;
 }

@@ -10,14 +10,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@IdClass(ExerciseOrderId.class)
-public class ExerciseAndOrder {
+@IdClass(ExerciseBundleItemPK.class)
+public class ExerciseBundleItem {
 
     @Id
     @ManyToOne
-/*
-    @JoinColumn(name = "exercise_id", nullable = false)
-*/
     private Exercise exercise;
 
     @Id
@@ -25,19 +22,19 @@ public class ExerciseAndOrder {
     private Integer exerciseOrder;
 
     @ManyToOne
-/*
-    @JoinColumn(name = "exercise_bundle_id", nullable = false)
-*/
     private ExerciseBundle exerciseBundle;
 
+    private int duration;
+    private int repeatCount;
 
 }
 
-class ExerciseOrderId implements Serializable {
+class ExerciseBundleItemPK implements Serializable {
 
     private final Long exercise;
     private final Integer exerciseOrder;
-    public ExerciseOrderId(Long exercise, Integer exerciseOrder) {
+
+    public ExerciseBundleItemPK(Long exercise, Integer exerciseOrder) {
         this.exercise = exercise;
         this.exerciseOrder = exerciseOrder;
     }
