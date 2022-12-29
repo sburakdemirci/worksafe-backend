@@ -26,33 +26,26 @@ import lombok.NoArgsConstructor;
 @Getter
 public class User extends EntityAuditBase {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
-    private String email;
-
-    @NotNull
-    private String firstName;
-
-    @NotNull
-    private String lastName;
-    private String avatarUrl;
-
-    //todo hashlenmis password ile geldiginde izin vermediginden emin ol
-    @NotNull
-    private String password;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private AuthProvider authProvider;
-
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "Authorities")
     @Enumerated(EnumType.STRING)
     List<Role> authorities;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @NotNull
+    private String email;
+    @NotNull
+    private String firstName;
+    @NotNull
+    private String lastName;
+    private String avatarUrl;
+    //todo hashlenmis password ile geldiginde izin vermediginden emin ol
+    @NotNull
+    private String password;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private AuthProvider authProvider;
     private String providerId;
     private boolean enabled;
     private boolean locked;
@@ -68,6 +61,6 @@ public class User extends EntityAuditBase {
         this.password = password;
         this.authProvider = authProvider;
         this.providerId = providerId;
-        this.authorities = Arrays.asList(Role.USER);
+        this.authorities = List.of(Role.USER);
     }
 }

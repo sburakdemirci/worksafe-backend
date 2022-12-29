@@ -28,4 +28,5 @@ public class EntityAuditBase {
     @LastModifiedDate
     @Temporal(TIMESTAMP)
     private Instant updatedTime;
+
 }

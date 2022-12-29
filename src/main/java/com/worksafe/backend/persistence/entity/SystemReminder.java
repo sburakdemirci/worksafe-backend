@@ -1,11 +1,12 @@
 package com.worksafe.backend.persistence.entity;
 
+import com.worksafe.backend.dto.request.ReminderDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -27,9 +28,16 @@ public class SystemReminder extends EntityAuditBase {
     @NotNull
     private Long intervalInSeconds;
 
-    @Builder
-    public SystemReminder(String title, String description) {
-        this.title = title;
-        this.description = description;
+
+    public SystemReminder(ReminderDto reminderDto) {
+        this.title = reminderDto.getTitle();
+        this.description = reminderDto.getDescription();
+        this.intervalInSeconds = reminderDto.getReminderInterval();
+    }
+
+    public void update(ReminderDto reminderDto) {
+        this.title = reminderDto.getTitle();
+        this.description = reminderDto.getDescription();
+        this.intervalInSeconds = reminderDto.getReminderInterval();
     }
 }
