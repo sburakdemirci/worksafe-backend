@@ -35,7 +35,7 @@ public class WebSecurityConfig {
 
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/authentication/login",
+                        .requestMatchers("/authentication/login","/email",
                                 "/authentication/signup",
                                 "/v3/api-docs/**", "/swagger-ui/**"
                         )

@@ -1,14 +1,28 @@
 package com.worksafe.backend.service;
 
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class EmailSenderImpl implements EmailSender {
+@RequiredArgsConstructor
+public class EmailSenderImpl {
 
-    @Override
-    public void sendEmail(String content, List<String> recipentEmails) {
+  /*  @Autowired
+    private JavaMailSender javaMailSender;
 
-    }
+    public void sendEmail() {
+        String from = "info@movetodigital.net";
+        String to = "gfb.salih95@gmail.com";
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setFrom(from);
+        message.setTo(to);
+        message.setSubject("This is a plain text email");
+        message.setText("Hello guys! This is a plain text email.");
+
+        javaMailSender.send(message);
+    }*/
 }
