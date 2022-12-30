@@ -34,6 +34,7 @@ public class EmailController {
         String host = "smtp.yandex.com";
         //configure Mailtrap's SMTP server details
         Properties props = new Properties();
+
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.ssl.enable", "true");
@@ -41,7 +42,7 @@ public class EmailController {
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "465");
         //create the Session object
-        Session session = Session.getInstance(props,
+        Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);

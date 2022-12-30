@@ -1,7 +1,6 @@
 package com.worksafe.backend.persistence.entity;
 
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.worksafe.backend.enumarator.AuthProvider;
@@ -61,6 +60,6 @@ public class User extends EntityAuditBase {
         this.password = password;
         this.authProvider = authProvider;
         this.providerId = providerId;
-        this.authorities = List.of(Role.USER);
+        this.authorities = List.of(Role.ROLE_USER);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.worksafe.backend.dto.request.ExerciseDto;
@@ -19,11 +20,16 @@ import com.worksafe.backend.security.UserPrincipal;
 import com.worksafe.backend.service.ExerciseService;
 import com.worksafe.backend.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("exercise")
 @RequiredArgsConstructor
+
+//swagger auth token configurer
+@SecurityRequirement(name = "bearerAuth")
+
 public class ExerciseController {
 
     private final ExerciseService exerciseService;
@@ -50,7 +56,7 @@ public class ExerciseController {
 
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping()
-    public List<Exercise> getAllByBodyPart(@PathVariable BodyPart bodyPart) {
+    public List<Exercise> getAllByBodyPart(@RequestParam BodyPart bodyPart) {
 
         return exerciseService.getAllByBodyPart(bodyPart);
     }
