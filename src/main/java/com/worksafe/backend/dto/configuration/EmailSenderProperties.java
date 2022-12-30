@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EmailSenderProperties {
+
     private String email;
     private String alias;
 }

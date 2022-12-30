@@ -12,8 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.worksafe.backend.dto.configuration.AppSecurityResourcesConfiguration;
-import com.worksafe.backend.security.CustomUserDetailsService;
-import com.worksafe.backend.security.TokenAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,7 +35,6 @@ public class WebSecurityConfiguration {
                 .disable()
                 .formLogin()
                 .disable()
-
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers(appSecurityResourcesConfiguration.getUnauthorizedPatterns()
