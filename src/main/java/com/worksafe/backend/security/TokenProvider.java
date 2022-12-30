@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.worksafe.backend.configuration.JwtTokenProperties;
+import com.worksafe.backend.dto.configuration.JwtTokenProperties;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

@@ -11,14 +11,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.worksafe.backend.dto.configuration.AppSecurityResourcesConfiguration;
+import com.worksafe.backend.security.CustomUserDetailsService;
+import com.worksafe.backend.security.TokenAuthenticationFilter;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
-public class WebSecurityConfig {
+public class WebSecurityConfiguration {
 
     private final CustomUserDetailsService customUserDetailsService;
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
+    private final AppSecurityResourcesConfiguration appSecurityResourcesConfiguration;
 
 
     @Bean
@@ -35,9 +40,8 @@ public class WebSecurityConfig {
 
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/authentication/login","/email",
-                                "/authentication/signup",
-                                "/v3/api-docs/**", "/swagger-ui/**"
+                        .requestMatchers(appSecurityResourcesConfiguration.getUnauthorizedPatterns()
+                                .toArray(String[]::new)
                         )
                         .permitAll()
                         .anyRequest().authenticated()
