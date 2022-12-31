@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.worksafe.backend.dto.configuration.AppSecurityResourcesConfiguration;
+import com.worksafe.backend.dto.configuration.AppServerProperties;
 import com.worksafe.backend.dto.configuration.EmailAuthenticationProperties;
 import com.worksafe.backend.dto.configuration.EmailSenderProperties;
 import com.worksafe.backend.dto.configuration.EmailSmtpProperties;
@@ -47,6 +48,12 @@ public class PropertyConfiguration {
     @ConfigurationProperties(prefix = "app.security.resources")
     public AppSecurityResourcesConfiguration getAppSecurityResourcesConfiguration() {
         return new AppSecurityResourcesConfiguration();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "app.server")
+    public AppServerProperties getAppServerProperties() {
+        return new AppServerProperties();
     }
 
     @Bean
