@@ -29,6 +29,8 @@ public class User extends EntityAuditBase {
     @CollectionTable(name = "Authorities")
     @Enumerated(EnumType.STRING)
     List<Role> authorities;
+
+    //todo burayi string uuid yap.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -66,11 +66,11 @@ public class AuthenticationController {
         User user = userService.save(User.builder()
                 .firstName(signupDto.getFirstName())
                 .lastName(signupDto.getLastName())
-                .authProvider(AuthProvider.app)
+                .authProvider(AuthProvider.LOCAL)
                 .email(signupDto.getEmail())
                 .password(passwordEncoder.encode(signupDto.getPassword()))
                 .build());
-
+/*
         VerificationToken verificationToken = userService.createVerificationTokenForUser(
                 user);
         String verificationTokenUrl = userService.
@@ -78,7 +78,7 @@ public class AuthenticationController {
 
         emailSender.sendSingleTextEmail("Desk Mate User Verification",
                 EmailTemplateHelper.constructUserVerificationEmail(user, verificationTokenUrl),
-                user.getEmail());
+                user.getEmail());*/
 
     }
 

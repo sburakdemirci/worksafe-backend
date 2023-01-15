@@ -35,12 +35,15 @@ public class WebSecurityConfiguration {
                 .disable()
                 .formLogin()
                 .disable()
+                .logout()
+                .disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeHttpRequests((authz) -> authz
+                .authorizeHttpRequests((auth) -> auth
                         .requestMatchers(appSecurityResourcesConfiguration.getUnauthorizedPatterns()
                                 .toArray(String[]::new)
                         )
                         .permitAll()
+
                         .anyRequest().authenticated()
 
                 );
@@ -48,6 +51,7 @@ public class WebSecurityConfiguration {
 
         //todo 404 yerine 403 donuyor, bir ara hallet.
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
