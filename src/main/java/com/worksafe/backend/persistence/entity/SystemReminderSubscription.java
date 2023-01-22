@@ -34,11 +34,11 @@ public class SystemReminderSubscription extends EntityAuditBase {
 
 class SystemReminderAndUserPK implements Serializable {
 
-    private final Long user;
+    private final String user;
     private final Long reminder;
 
 
-    public SystemReminderAndUserPK(Long user, Long reminder) {
+    public SystemReminderAndUserPK(String  user, Long reminder) {
         this.user = user;
         this.reminder = reminder;
     }

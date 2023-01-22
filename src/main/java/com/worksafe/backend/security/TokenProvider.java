@@ -36,20 +36,20 @@ public class TokenProvider {
                 now.getTime() + jwtTokenProperties.getExpireLength());
 
         return Jwts.builder()
-                .setSubject(Long.toString(userPrincipal.getUser().getId()))
+                .setSubject(userPrincipal.getUser().getId())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, jwtTokenProperties.getSecretKey())
                 .compact();
     }
 
-    public Long getUserIdFromToken(String token) {
+    public String getUserIdFromToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(jwtTokenProperties.getSecretKey())
                 .parseClaimsJws(token)
                 .getBody();
 
-        return Long.parseLong(claims.getSubject());
+        return claims.getSubject();
     }
 
     public boolean validateToken(String authToken) {

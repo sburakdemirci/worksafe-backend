@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.worksafe.backend.persistence.entity.User;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findByEmail(String email);
 
@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Query("update User u set u.enabled=:enabled where u.id=:id")
-    void setUserEnabled(@Param(value = "id") Long id, @Param(value = "enabled") boolean enabled);
+    void setUserEnabled(@Param(value = "id") String id, @Param(value = "enabled") boolean enabled);
 
 
 }

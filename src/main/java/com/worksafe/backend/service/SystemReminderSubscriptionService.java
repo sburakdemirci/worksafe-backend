@@ -32,7 +32,7 @@ public class SystemReminderSubscriptionService {
     }
 
     @Transactional
-    public void deleteByReminderIdAndUserId(Long reminderId, Long userId) {
+    public void deleteByReminderIdAndUserId(Long reminderId, String userId) {
         systemReminderSubscriptionRepository.deleteByReminderIdAndUserId(reminderId, userId);
     }
 
@@ -45,12 +45,12 @@ public class SystemReminderSubscriptionService {
         return systemReminderSubscriptionRepository.findById(id);
     }
 
-    public List<SystemReminderSubscription> findAllByUserId(Long userId) {
+    public List<SystemReminderSubscription> findAllByUserId(String userId) {
         return systemReminderSubscriptionRepository.findAllByUserId(userId);
     }
 
     public Optional<SystemReminderSubscription> findByReminderIdAndUserId(Long reminderId,
-            Long userId) {
+            String userId) {
         return systemReminderSubscriptionRepository.findByReminderIdAndUserId(reminderId, userId);
     }
 

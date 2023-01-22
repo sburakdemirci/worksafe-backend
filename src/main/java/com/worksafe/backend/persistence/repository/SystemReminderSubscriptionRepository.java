@@ -13,12 +13,12 @@ public interface SystemReminderSubscriptionRepository extends
         JpaRepository<SystemReminderSubscription, Long> {
 
 
-    List<SystemReminderSubscription> findAllByUserId(Long userId);
+    List<SystemReminderSubscription> findAllByUserId(String userId);
 
-    Optional<SystemReminderSubscription> findByReminderIdAndUserId(Long reminderId, Long userId);
+    Optional<SystemReminderSubscription> findByReminderIdAndUserId(Long reminderId, String userId);
 
     @Transactional
-    void deleteByReminderIdAndUserId(Long reminderId, Long userId);
+    void deleteByReminderIdAndUserId(Long reminderId, String userId);
 
 
 }

@@ -30,10 +30,9 @@ public class User extends EntityAuditBase {
     @Enumerated(EnumType.STRING)
     List<Role> authorities;
 
-    //todo burayi string uuid yap.
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     @NotNull
     private String email;
     @NotNull

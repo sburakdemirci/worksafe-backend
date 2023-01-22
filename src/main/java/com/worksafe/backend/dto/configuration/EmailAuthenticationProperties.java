@@ -10,4 +10,5 @@ public class EmailAuthenticationProperties {
     private String username;
     private String password;
     //todo encyrpt and decyript password. Do not put it directly to the yaml file
+    //todo or put it to database
 }
