@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ExerciseDto {
+public class ExerciseRequest {
 
     private String title;
     private String subtitle;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worksafe.backend.dto.request.ExerciseDto;
+import com.worksafe.backend.dto.request.ExerciseRequest;
 import com.worksafe.backend.enumarator.BodyPart;
 import com.worksafe.backend.persistence.entity.Exercise;
 import com.worksafe.backend.security.CurrentUser;
@@ -38,13 +38,13 @@ public class ExerciseController {
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
-    public Exercise create(@RequestBody ExerciseDto exerciseDto) {
+    public Exercise create(@RequestBody ExerciseRequest exerciseDto) {
         return exerciseService.save(exerciseDto);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("/{id}")
-    public Exercise update(@PathVariable Long id, @RequestBody ExerciseDto exerciseDto) {
+    public Exercise update(@PathVariable Long id, @RequestBody ExerciseRequest exerciseDto) {
         return exerciseService.save(exerciseDto);
     }
 

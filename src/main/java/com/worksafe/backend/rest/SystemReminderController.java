@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worksafe.backend.dto.request.ReminderDto;
+import com.worksafe.backend.dto.request.ReminderRequest;
 import com.worksafe.backend.persistence.entity.SystemReminder;
 import com.worksafe.backend.service.SystemReminderService;
 
@@ -32,22 +32,22 @@ public class SystemReminderController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public SystemReminder create(@RequestBody ReminderDto reminderDto) {
-        return systemReminderService.save(new SystemReminder(reminderDto));
+    public SystemReminder create(@RequestBody ReminderRequest reminderRequest) {
+        return systemReminderService.save(new SystemReminder(reminderRequest));
     }
 
     @PostMapping("{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public SystemReminder update(@PathVariable Long id, @RequestBody ReminderDto reminderDto) {
+    public SystemReminder update(@PathVariable Long id, @RequestBody ReminderRequest reminderRequest) {
         SystemReminder systemReminder = systemReminderService.getById(id)
                 .orElseThrow(RuntimeException::new);
-        systemReminder.update(reminderDto);
-        return systemReminderService.save(new SystemReminder(reminderDto));
+        systemReminder.update(reminderRequest);
+        return systemReminderService.save(new SystemReminder(reminderRequest));
     }
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void delete(@PathVariable Long id, @RequestBody ReminderDto reminderDto) {
+    public void delete(@PathVariable Long id, @RequestBody ReminderRequest reminderRequest) {
         systemReminderService.deleteById(id);
     }
 

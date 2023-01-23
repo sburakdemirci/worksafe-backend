@@ -1,7 +1,7 @@
 package com.worksafe.backend.persistence.entity;
 
 
-import com.worksafe.backend.dto.request.ExerciseDto;
+import com.worksafe.backend.dto.request.ExerciseRequest;
 import com.worksafe.backend.enumarator.BodyPart;
 
 import jakarta.persistence.Entity;
@@ -43,7 +43,7 @@ public class Exercise extends EntityAuditBase {
     private boolean visible;
 
 
-    public Exercise(ExerciseDto exerciseDto) {
+    public Exercise(ExerciseRequest exerciseDto) {
         this.title = exerciseDto.getTitle();
         this.subtitle = exerciseDto.getSubtitle();
         this.description = exerciseDto.getDescription();
@@ -52,7 +52,7 @@ public class Exercise extends EntityAuditBase {
         this.visible = true;
     }
 
-    public Exercise update(ExerciseDto exerciseDto) {
+    public Exercise update(ExerciseRequest exerciseDto) {
         this.title = exerciseDto.getTitle();
         this.subtitle = exerciseDto.getSubtitle();
         this.description = exerciseDto.getDescription();

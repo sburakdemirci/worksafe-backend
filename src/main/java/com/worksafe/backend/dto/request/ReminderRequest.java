@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReminderDto {
+public class ReminderRequest {
 
     @NotBlank
     private String title;

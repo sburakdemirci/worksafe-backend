@@ -28,15 +28,23 @@ public class TokenProvider {
     }
 
 
-    public String createToken(Authentication authentication) {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+    public String createTokenFromUserId(String userId) {
+        return createToken(userId);
+    }
 
+    public String createTokenFromAuthentication(Authentication authentication) {
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        return createToken(userPrincipal.getUser().getId());
+
+    }
+
+    private String createToken(String userId) {
         Date now = new Date();
         Date expiryDate = new Date(
                 now.getTime() + jwtTokenProperties.getExpireLength());
 
         return Jwts.builder()
-                .setSubject(userPrincipal.getUser().getId())
+                .setSubject(userId)
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, jwtTokenProperties.getSecretKey())
