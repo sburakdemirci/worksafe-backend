@@ -44,7 +44,7 @@ public class User extends EntityAuditBase {
     private String password;
     @NotNull
     @Enumerated(EnumType.STRING)
-    private UserAuthProvider userAuthProvider;
+    private UserAuthProvider authProvider;
     private String providerId;
     private boolean enabled;
     private boolean locked;
@@ -53,11 +53,11 @@ public class User extends EntityAuditBase {
 
     @Builder
     public User(String email, String name, String password,
-            UserAuthProvider userAuthProvider, String providerId) {
+            UserAuthProvider authProvider, String providerId) {
         this.email = email;
         this.name = name;
         this.password = password;
-        this.userAuthProvider = userAuthProvider;
+        this.authProvider = authProvider;
         this.providerId = providerId;
         this.authorities = List.of(Role.ROLE_USER);
     }

@@ -81,7 +81,7 @@ public class AuthenticationController {
 
         User user = userService.save(User.builder()
                 .name(signupRequest.getName())
-                .userAuthProvider(UserAuthProvider.LOCAL)
+                .authProvider(UserAuthProvider.LOCAL)
                 .email(signupRequest.getEmail())
                 .password(passwordEncoder.encode(signupRequest.getPassword()))
                 .build());
