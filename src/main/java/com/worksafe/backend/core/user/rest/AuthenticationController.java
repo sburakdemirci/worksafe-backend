@@ -1,4 +1,4 @@
-package com.worksafe.backend.core.security.rest;
+package com.worksafe.backend.core.user.rest;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.worksafe.backend.core.security.exception.AuthenticationException;
 import com.worksafe.backend.core.user.request.ForgotPasswordRequest;
 import com.worksafe.backend.core.user.request.LoginRequest;
+import com.worksafe.backend.core.user.request.PasswordResetRequest;
 import com.worksafe.backend.core.user.response.LoginResponse;
 import com.worksafe.backend.core.user.entity.PasswordResetToken;
 import com.worksafe.backend.core.user.entity.RefreshToken;
@@ -129,21 +130,14 @@ public class AuthenticationController {
                 .userId(refreshToken.getUser().getId())
                 .username(refreshToken.getUser().getEmail())
                 .build();
-
     }
 
 
-/*
-    @PostMapping("reset-password-token/{email}")
-    public void resetPassword(@PathVariable String email, @RequestParam String token) {
 
+    @PostMapping
+    public void resetPassword(@RequestBody PasswordResetRequest passwordResetRequest){
+        //todo implement
     }
-
-    @PostMapping("reset-password-token/{email}")
-    public void resetPassword(@PathVariable String email, @RequestParam String token) {
-
-    }
-*/
 
 
 }
